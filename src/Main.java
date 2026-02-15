@@ -19,16 +19,18 @@ public class Main {
         produtos.add(new Produto("Monitor", 95.4, 18));
 
 
-    while (opcao != 6){
+    while (opcao != 7){
         System.out.println("\n ==== PRODUTOS ====");
         System.out.println("1. Listar produtos");
         System.out.println("2. Vender produto");
         System.out.println("3. Repor estoque ");
         System.out.println("4. Cadastrar novo produto");
         System.out.println("5. Mostrar valor total do estoque");
-        System.out.println("6. Sair");
+        System.out.println("6. Encontrar produto");
+        System.out.println("7. Sair");
 
         opcao = scanner.nextInt();
+        scanner.nextLine();
 
 
         if(opcao == 1) {
@@ -41,6 +43,8 @@ public class Main {
         else if(opcao == 2){
             System.out.println("Digite a ID do Produto:");
             int id = scanner.nextInt();
+            scanner.nextLine();
+
 
             if(id < 0 || id >= produtos.size()){
                 System.out.println("ID Inválido!");
@@ -55,6 +59,8 @@ public class Main {
         else if(opcao == 3){
             System.out.println("Digite a ID do Produto:");
             int id = scanner.nextInt();
+            scanner.nextLine();
+
             if(id < 0 || id >= produtos.size()){
                 System.out.println("ID invalido!");
                 continue;
@@ -87,22 +93,46 @@ public class Main {
             for(int i = 0; i<  produtos.size(); i++){
                 Produto p = produtos.get(i);
 
+                double valorProduto = p.getPreco() * p.getQuantidade();
                 totalEstoque += p.getPreco() * p.getQuantidade();
 
 
-                System.out.println(totalEstoque);
 
 
+
+                System.out.println(p.getNome() + ":" + " " + "R$ " + valorProduto);
 
             }
+            System.out.println(totalEstoque);
 
-        };
+        }else if(opcao == 6){
+            System.out.println("Digite o nome do produto:");
+            String NomeBusca = scanner.nextLine();
 
 
+            boolean encontrado = false;
+            for(int i = 0; i < produtos.size(); i++){
+            Produto p = produtos.get(i);
+                if(p.getNome().toLowerCase().contains(NomeBusca.toLowerCase())){
+                    System.out.println("Produto encontrado!");
+                    System.out.println("ID: " + i);
+                    p.mostrarTudo();
+                    encontrado = true;
 
-
-    }
+                }
+                if(!encontrado) {
+                    System.out.println("Nada encontrado.");
+                }
+                }
+            }
+        }
 
         scanner.close();
+
+
+
     }
-}
+
+
+    }
+

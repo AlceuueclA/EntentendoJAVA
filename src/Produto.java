@@ -22,7 +22,9 @@ public class Produto {
 
 
         if(qtd <= quantidade) {
+            quantidade-= qtd;
             System.out.println("Venda realizada!");
+            System.out.println("Restam " + quantidade + " unidades no estoque");
         } else{
             System.out.println("Sem estoque!");
         }
