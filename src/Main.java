@@ -19,12 +19,14 @@ public class Main {
         produtos.add(new Produto("Monitor", 95.4, 18));
 
 
-    while (opcao != 4){
+    while (opcao != 6){
         System.out.println("\n ==== PRODUTOS ====");
         System.out.println("1. Listar produtos");
         System.out.println("2. Vender produto");
         System.out.println("3. Repor estoque ");
-        System.out.println("4. Sair");
+        System.out.println("4. Cadastrar novo produto");
+        System.out.println("5. Mostrar valor total do estoque");
+        System.out.println("6. Sair");
 
         opcao = scanner.nextInt();
 
@@ -62,7 +64,40 @@ public class Main {
 
             produtos.get(id).repor(qtd);
 
-        }
+        }else if(opcao == 4){
+            scanner.nextLine();
+
+            System.out.println("Digite o nome do produto:");
+            String nome = scanner.nextLine();
+
+            System.out.println("Digite o preço: ");
+            double preco = scanner.nextDouble();
+
+            System.out.println("Digite a quantidade: ");
+            int qtd = scanner.nextInt();
+
+            produtos.add(new Produto(nome, preco, qtd));
+
+            System.out.println("Produto adicionado com sucesso!");
+
+
+        }else if(opcao == 5){
+            double totalEstoque = 0;
+
+            for(int i = 0; i<  produtos.size(); i++){
+                Produto p = produtos.get(i);
+
+                totalEstoque += p.getPreco() * p.getQuantidade();
+
+
+                System.out.println(totalEstoque);
+
+
+
+            }
+
+        };
+
 
 
 
