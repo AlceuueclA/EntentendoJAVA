@@ -1,8 +1,8 @@
 public class Produto {
 
-    String nome;
-    double preco;
-    int quantidade;
+    private String nome;
+    private double preco;
+    private int quantidade;
 
     public Produto(String a, double b, int c){
 
@@ -16,7 +16,33 @@ public class Produto {
         System.out.println("Produto: " + nome);
         System.out.println("Preço: " + preco);
         System.out.println("Quantidade: " + quantidade);
-    };
+    }
+
+    public void vender(int qtd){
+
+
+        if(qtd <= quantidade) {
+            System.out.println("Venda realizada!");
+        } else{
+            System.out.println("Sem estoque!");
+        }
+    }
+    public void repor(int qtd){
+        quantidade += qtd;
+        System.out.println("Estoque atualizado!");
+    }
+    public String getNome(){
+        return nome;
+
+    }
+
+    public double getPreco(){
+      return preco;
+    }
+
+    public int getQuantidade(){
+        return  quantidade;
+    }
 
 }
 
